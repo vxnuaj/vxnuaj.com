@@ -58,7 +58,8 @@
     display: inline-block;
 }
 
-@media (min-height: 800px) {
+
+@media (min-height: 849px) {
     .home {
         margin-top: 120px;
     }
