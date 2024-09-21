@@ -78,7 +78,6 @@
     }
 
     .post .image-container{
-        height: auto;
-
+        height: 130px;
     }
 }
