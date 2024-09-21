@@ -4,8 +4,9 @@ import { useRef, useState } from 'react';
 import 'styles/home.css';
 
 export default function Page() {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false); 
+
 
   const toggleAudio = () => {
     if (audioRef.current) {
