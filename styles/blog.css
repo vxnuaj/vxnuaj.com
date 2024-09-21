@@ -1,15 +1,15 @@
-.blog{
+.blog {
     margin-top: 90px;
 }
 
-.heading{
+.heading {
     font-family: 'Roboto Mono', monospace;
     font-size: 25px;
     padding-top: 1.5rem;
     padding-bottom: .9rem;
 }
 
-.desblog{
+.desblog {
     font-family: 'Roboto Mono', monospace;
     font-size: 13px;
     opacity: .6;
@@ -17,42 +17,70 @@
     padding-bottom: 2rem;
 }
 
-.postsTitle{
+.postsTitle {
     font-size: 20px;
     padding-bottom: 2px;
 }
 
-.postsDes{
+.postsDes {
     font-size: 12px;
     font-family: 'Roboto Mono', monospace;
     opacity: .6;
     padding-bottom: 5px;
 }
 
-.postsImage{
+.postsImage {
     width: 80px;
     height: 80px;
     position: relative;
     top: 5px;
     border-radius: 7px;
+    margin-right: 14px;
 }
 
-.postsDate{
+.postsDate {
     font-size: 12px;
     font-family: 'Roboto Mono', monospace;
     opacity: .6;
 }
 
-.postsContainer{
+.postsContainer {
     display: flex; 
-    padding-left: 14px; 
     flex-direction: column;
     justify-content: center; 
 }
 
-.backarrow{
+.placeholder {
+    width: 80px;  /* Same width as the image */
+    height: 80px; /* Same height as the image */
+    right: 20px;
+    border-radius: 7px;
+    background-color: #f0f0f0; /* Placeholder color */
+}
+
+.backarrow {
     position: relative;
     right: 80px;
-    top: 57px;
+    top: 56px;
     width: fit-content;
+    display: flex;
+    justify-content: flex-start; /* Align to the left on larger screens */
+    order: 1; /* Default order for larger screens */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 700px) {
+    .backarrow {
+        justify-content: center; /* Center the BackArrow on smaller screens */
+        order: 2; /* Change the order to move it below the heading */
+        margin-bottom: 1rem; /* Optional spacing */
+        position: relative;
+        top: 27px;
+        left: 0px;
+    }
+
+    .heading {
+        order: 1; /* Move heading above BackArrow */
+    }
+
 }

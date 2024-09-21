@@ -22,9 +22,55 @@
     padding-bottom: .5rem;
 }
 
-.backarrow{
+.postBody{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px
+}
+
+.image-container {
+    width: 100%;         
+    max-width: 560px;    
+    height: auto;
+    position: relative;  
+    overflow: hidden;   
+    border-radius: 3px;
+    padding-top: 24.4%; 
+}
+
+.postImage {
+    position: absolute; 
+    top: 0;            
+    left: 0;           
+    width: 100%;       
+    height: 100%;      
+    object-fit: cover; 
+}
+
+
+.backarrow {
     position: relative;
     right: 80px;
-    top: 61px;
+    top: 56px;
     width: fit-content;
+    display: flex;
+    justify-content: flex-start; /* Align to the left on larger screens */
+    order: 1; /* Default order for larger screens */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 700px) {
+    .backarrow {
+        justify-content: center; /* Center the BackArrow on smaller screens */
+        order: 2; /* Change the order to move it below the heading */
+        margin-bottom: 1rem; /* Optional spacing */
+        position: relative;
+        top: 27px;
+        left: 0px;
+    }
+
+    .heading {
+        order: 1; /* Move heading above BackArrow */
+
+    }
+
 }

@@ -87,20 +87,10 @@ export default function Blog({ params }) {
       />
 
 {post.metadata.image && (
-  <div
-  className="image-container"
-  style={{ width: '580px', height: '137px', objectPosition: 'center', overflow: 'hidden', borderRadius: '5px'}}
->
-  <img
+  <div className="image-container">
+  <img className = 'postImage'
     src={post.metadata.image}
     alt={post.metadata.title}
-    style={{
-      width: '100%',
-      height: 'auto',
-      objectFit: 'cover',
-      objectPosition:'center',
-      borderRadius: '5px'
-    }}
   />
 </div>
 )}
