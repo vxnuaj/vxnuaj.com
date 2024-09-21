@@ -23,7 +23,8 @@
 
 .postBody{
     font-family: 'Inter', sans-serif;
-    font-size: 15px
+    font-size: 15px;
+    padding-bottom: 5rem;
 }
 
 .image-container {
