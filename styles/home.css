@@ -1,0 +1,52 @@
+.home{
+    margin-top: 90px;
+}
+
+.vname{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 25px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.rname{
+    font-size: 12px;
+}
+
+.desHome{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+}
+
+.body{
+    font-family:'inter';
+    font-size: 15px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.subbody{
+    font-size: 10px;
+}
+
+.footer-nav{
+    padding-top: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+}
+
+.footer-nav a {
+    margin-right: 20px
+  }
+
+.webtheme{
+    font-family: 'Roboto Mono', monospace;
+    padding-top: 1rem;
+    opacity: .6;
+    font-size: 13px;
+    padding-right: 18rem;
+    display: inline-block;
+}
+

@@ -2,6 +2,9 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+import BackArrow from 'app/components/BackArrow';
+import 'styles/post.css'
+
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -59,7 +62,7 @@ export default function Blog({ params }) {
   }
 
   return (
-    <section>
+    <section className = 'post'> 
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -82,15 +85,40 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+
+{post.metadata.image && (
+  <div
+  className="image-container"
+  style={{ width: '580px', height: '137px', objectPosition: 'center', overflow: 'hidden', borderRadius: '5px'}}
+>
+  <img
+    src={post.metadata.image}
+    alt={post.metadata.title}
+    style={{
+      width: '100%',
+      height: 'auto',
+      objectFit: 'cover',
+      objectPosition:'center',
+      borderRadius: '5px'
+    }}
+  />
+</div>
+)}
+      <div className = 'backarrow'>
+      <BackArrow/>
+      </div>
+      <h1 className="postTitle">
         {post.metadata.title}
       </h1>
+      <p className="postDes">
+          {post.metadata.summary}
+      </p>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="postDate">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="postBody">
         <CustomMDX source={post.content} />
       </article>
     </section>

@@ -1,0 +1,30 @@
+.post{
+    margin-top: 90px;
+}
+
+.postTitle{
+    font-family: 'Roboto mono', monospace;
+    font-size: 25px;
+    padding-top: 1.5rem;
+    padding-bottom: .7rem;    
+}
+
+.postDate{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+}
+
+.postDes{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+    padding-bottom: .5rem;
+}
+
+.backarrow{
+    position: relative;
+    right: 80px;
+    top: 61px;
+    width: fit-content;
+}
