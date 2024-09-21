@@ -1,5 +1,12 @@
-.home{
-    margin-top: 90px;
+.home {
+    margin-top: 35px; 
+}
+
+
+.homeImg{
+    overflow: hidden;
+    height: 100px;
+    border-radius: 7px;
 }
 
 .vname{
@@ -10,7 +17,7 @@
 }
 
 .rname{
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .desHome{
@@ -23,7 +30,7 @@
     font-family:'Inter', sans-serif;
     font-size: 15px;
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: .5rem;
 }
 
 .subbody{
@@ -31,7 +38,7 @@
 }
 
 .footer-nav{
-    padding-top: 1rem;
+    padding-top: .75rem;
     font-family: 'Roboto Mono', monospace;
     font-size: 13px;
     opacity: .6;
@@ -51,3 +58,36 @@
     display: inline-block;
 }
 
+@media (min-height: 800px) {
+    .home {
+        margin-top: 120px;
+    }
+    .home .vname {
+        font-family: 'Roboto Mono', monospace;
+        font-size: 25px;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .home .rname{
+        font-size: 13px;
+    }
+
+    .home .body {
+        padding-top: 1.5rem; 
+        padding-bottom: 1.5rem;
+        font-size: 15px;
+    }
+
+    .home .footer-nav{
+        padding-top: 1rem;
+    }
+
+    .home .homeImg{
+        overflow: hidden;
+        height: fit-content;
+    }
+
+
+
+}

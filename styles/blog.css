@@ -1,12 +1,17 @@
 .blog {
-    margin-top: 90px;
+    margin-top: 35px;
+}
+
+.blogimage{
+    height: 100px;
+    overflow:hidden;
+    border-radius: 7px;
 }
 
 .heading {
     font-family: 'Roboto Mono', monospace;
     font-size: 25px;
-    padding-top: 1.5rem;
-    padding-bottom: .9rem;
+    padding-bottom: 1rem;
 }
 
 .desblog {
@@ -14,7 +19,7 @@
     font-size: 13px;
     opacity: .6;
     line-height: 30px;
-    padding-bottom: 2rem;
+    padding-bottom: 1.75rem;
 }
 
 .postsTitle {
@@ -33,7 +38,6 @@
     width: 80px;
     height: 80px;
     position: relative;
-    top: 5px;
     border-radius: 7px;
     margin-right: 14px;
 }
@@ -61,19 +65,18 @@
 .backarrow {
     position: relative;
     right: 80px;
-    top: 56px;
+    top: 33px;
     width: fit-content;
     display: flex;
     justify-content: flex-start; /* Align to the left on larger screens */
-    order: 1; /* Default order for larger screens */
+    order: 1; 
 }
 
-/* Media query for smaller screens */
 @media (max-width: 700px) {
     .backarrow {
         justify-content: center; /* Center the BackArrow on smaller screens */
         order: 2; /* Change the order to move it below the heading */
-        margin-bottom: 1rem; /* Optional spacing */
+        margin-bottom: 2.6rem; /* Optional spacing */
         position: relative;
         top: 27px;
         left: 0px;
@@ -81,6 +84,26 @@
 
     .heading {
         order: 1; /* Move heading above BackArrow */
+    }
+
+}
+
+@media (min-height: 800px){
+    .blog{
+        margin-top: 120px;
+    }
+
+    .blog .blogimage{
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    .blog .heading{
+        padding-bottom: 1rem;
+    }
+
+    .blog .desblog{
+        padding-bottom:1.5rem;
     }
 
 }
