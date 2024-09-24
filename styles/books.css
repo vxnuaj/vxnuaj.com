@@ -2,11 +2,6 @@
     margin-top: 35px;
 }
 
-.booksimage{
-    height: 100px;
-    overflow:hidden;
-    border-radius: 7px;
-}
 
 .heading {
     font-family: 'Roboto Mono', monospace;
@@ -26,8 +21,13 @@
 .notesImage {
     width: 75px;
     border-radius: 10px;
+    transition: transform 0.2s ease;
+    perspective: 100px;
 }
 
+.notesImage:hover {
+    transform: rotateZ(10deg); /* Rotate on the Y-axis */
+}
 
 .bookLink{
     flex-shrink: 0;
