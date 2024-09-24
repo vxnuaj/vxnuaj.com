@@ -8,4 +8,4 @@ I don't know javascript.
 
 Should ask my technical co-founder, 4o. 
 
-[vxnuaj.com](vxnuaj.com)
+[vxnuaj.com](https://vxnuaj.com)
