@@ -53,6 +53,7 @@ export default function Page() {
             <a href="/blog"> infinity </a>
             <a href="https://x.com/vxnuaj"> x[dot]com </a>
             <a href="https://github.com/vxnuaj"> github </a>
+            <a href = '/books'> reads </a>
           </p>
         </nav>
       </footer>

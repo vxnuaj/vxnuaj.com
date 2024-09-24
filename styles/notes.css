@@ -1,0 +1,81 @@
+.notes{
+    margin-top:55px
+}
+
+.notesTitle{
+    font-family: 'Roboto mono', monospace;
+    font-size: 25px;
+    padding-bottom: .7rem;    
+}
+
+.notesDate{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+}
+
+.notesAuthor{
+    font-family: 'Roboto Mono', monospace;
+    opacity: .6;
+    font-size: 13px
+}
+
+.notesDes{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    opacity: .6;
+    padding-bottom: .5rem;
+}
+
+.notesBody{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding-bottom: 5rem;
+}
+
+.image-container {
+    width: 100%;         
+    max-width: 560px;    
+    aspect-ratio: 46 / 9;
+    position: relative;  
+    overflow: hidden;   
+    border-radius: 6px;
+}
+
+
+.backarrow {
+    position: relative;
+    right: 80px;
+    top: 2.1rem;
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    order: 1; 
+}
+
+@media (max-width: 700px) {
+    .backarrow {
+        justify-content: center; 
+        order: 2;
+        margin-bottom: 2.6rem; 
+        position: relative;
+        top: 27px;
+        left: 0px;
+    }
+
+    .heading {
+        order: 1; 
+
+    }
+
+}
+
+@media (min-height: 849px){
+    .notes {
+        margin-top: 120px
+    }
+
+    .notes .image-container{
+        height: 130px;
+    }
+}

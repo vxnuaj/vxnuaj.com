@@ -11,7 +11,6 @@ export default function Page() {
   return (
     <section className = 'blog'>
       <div className = 'blogimage'>
-      <img src = '/assets/tothemoon.png' alt = 'ToTheMoon!'></img> 
       </div>
       <div className = 'backarrow'>
       <BackArrow/>
