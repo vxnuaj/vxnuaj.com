@@ -38,9 +38,9 @@ export default function Page() {
         <br /><br />
         Currently, I’m maximizing for technical depth within Deep Learning, with the goal to get to its bleeding edge within the year.
         <br /><br />
-        Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <em><a href = '/infinity'>Infinity</a></em>
+        Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <em><a href = '/infinity'>Infinity</a></em>.
         <br /><br />
-        I also <a href = 'https://www.strava.com/athletes/101676876'>run</a>
+        I also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>.
         <br /><br />
         If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em> or <a href = 'https://cal.com/vxnuaj/quick-chat'><em>schedule a call!</em></a>
         <br /><br />
