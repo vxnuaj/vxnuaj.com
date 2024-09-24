@@ -18,6 +18,7 @@ export function BookNotes() {
             key={book.slug}
             href={`/books/${book.slug}`}
             className = 'bookLink'
+            style={{textDecoration: 'none'}}
           >
             <div className = 'notesContainer'>
               {book.metadata.image ? (

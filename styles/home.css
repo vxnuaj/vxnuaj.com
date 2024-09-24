@@ -56,8 +56,12 @@
     font-size: 13px;
     padding-right: 18rem;
     display: inline-block;
+    cursor: alias;
 }
 
+.webtheme:hover{
+    text-decoration: underline;
+}
 
 @media (min-height: 849px) {
     .home {

@@ -40,6 +40,11 @@
     position: relative;
     border-radius: 7px;
     margin-right: 14px;
+    transition: transform .2s ease;
+}
+
+.postsImage:hover{
+    transform: rotate(5deg);
 }
 
 .postsDate {

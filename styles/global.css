@@ -34,6 +34,13 @@ html {
   align-items: center;
 }
 
+a:hover{
+  cursor: alias;
+  text-decoration: underline;
+}
+
+
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 

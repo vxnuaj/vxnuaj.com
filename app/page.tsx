@@ -30,7 +30,7 @@ export default function Page() {
         
       </h1>
       <p className='desHome'>
-        working on neural nets @ <u className='u'>the bay area.</u>
+        working on neural nets @ the bay area.
       </p>
       <p className='body'>
         {`I opted out of UC Davis and flew across the country to Silicon Valley to learn
@@ -38,26 +38,26 @@ export default function Page() {
         <br /><br />
         Currently, I’m maximizing for technical depth within Deep Learning, with the goal to get to its bleeding edge within the year.
         <br /><br />
-        Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <b><u><a href = '/infinity'>Infinity</a></u></b>
+        Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <em><a href = '/infinity'>Infinity</a></em>
         <br /><br />
         I also run a lot.
         <br /><br />
-        If you wanna chat, message me on <b><u><a href = 'https://x.com/vxnuaj'>X</a></u></b> or <b><u><a href = 'https://cal.com/vxnuaj/quick-chat'>schedule a call</a></u></b>!
+        If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em> or <a href = 'https://cal.com/vxnuaj/quick-chat'><em>schedule a call!</em></a>
         <br /><br />
-        Alternatively, if you want to stay updated with what I’ve been working on, check out my <b><u><a href = 'https://github.com/vxnuaj'>GitHub</a></u></b> or subscribe to my <b><u><a href = 'https://vxnuaj.blog/s/adastra'>Substack</a></u></b>.
+        Alternatively, if you want to stay updated with what I’ve been working on, check out my <em><a href = 'https://github.com/vxnuaj'>GitHub</a></em> or <em><a href = 'https://vxnuaj.blog/s/adastra'>subscribe to my Substack</a></em>.
       </p>
       <audio ref={audioRef} src="/assets/lilrascal.mp3"></audio>
       <footer>
         <nav className="footer-nav">
           <p className="nav">
-            <a href="/blog"> infinity </a>
-            <a href="https://x.com/vxnuaj"> x[dot]com </a>
-            <a href="https://github.com/vxnuaj"> github </a>
-            <a href = '/books'> reads </a>
+            <a href="/blog">infinity</a>
+            <a href="https://x.com/vxnuaj">x[dot]com</a>
+            <a href="https://github.com/vxnuaj">github</a>
+            <a href = '/books'>reads</a>
           </p>
         </nav>
       </footer>
-          <span className='webtheme' onClick={toggleAudio} style={{ cursor: 'pointer' }}>
+          <span className='webtheme' onClick={toggleAudio}> 
           {isPlaying ? 'pause theme song' : 'play theme song'}
         </span>
     </section>
