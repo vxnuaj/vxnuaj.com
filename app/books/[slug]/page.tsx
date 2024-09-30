@@ -23,7 +23,7 @@ export function generateMetadata({ params }) {
     read: publishedTime,
     summary: description,
     image,
-    author, // Added author field here
+    author,
   } = book.metadata;
 
   let ogImage = image
@@ -46,7 +46,7 @@ export function generateMetadata({ params }) {
       ],
       authors: [
         {
-          name: author, // Include author in OpenGraph metadata
+          name: author,
         },
       ],
     },
@@ -55,7 +55,7 @@ export function generateMetadata({ params }) {
       title,
       description,
       images: [ogImage],
-      creator: author, // Add author to Twitter metadata
+      creator: author, 
     },
   };
 }

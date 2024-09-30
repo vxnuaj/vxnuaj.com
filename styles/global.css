@@ -34,12 +34,20 @@ html {
   align-items: center;
 }
 
-a:hover{
-  cursor: alias;
-  text-decoration: underline;
+a{
+    text-decoration:none !important;
+    cursor:alias;
 }
 
+.hashes{
+  color: pink;
+}
 
+blockquote {
+  border-left: 1px solid;
+  padding-left: 16px;
+  font-style: italic;
+}
 
 .prose .anchor {
   @apply absolute invisible no-underline;

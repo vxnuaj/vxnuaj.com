@@ -2,6 +2,14 @@
     margin-top: 35px; 
 }
 
+.body a{
+    text-decoration: none;
+}
+
+.body a:hover{
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+}
 
 .homeImg{
     overflow: hidden;
@@ -47,6 +55,7 @@
 .footer-nav a {
     margin-right: 20px
   }
+
 
 .webtheme{
     font-family: 'Roboto Mono', monospace;

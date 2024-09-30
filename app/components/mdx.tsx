@@ -70,6 +70,13 @@ function slugify(str) {
 function createHeading(level) {
   const Heading = ({ children }) => {
     let slug = slugify(children)
+
+    const headingText = React.createElement(
+      'span',
+      { className: 'hashes' }, 
+      `${'#'.repeat(level) + ' '}`
+    );
+
     return React.createElement(
       `h${level}`,
       { id: slug },
@@ -80,6 +87,7 @@ function createHeading(level) {
           className: 'anchor',
         }),
       ],
+      headingText,
       children
     )
   }

@@ -23,23 +23,26 @@
 }
 
 .postsTitle {
-    font-size: 20px;
-    padding-bottom: 2px;
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
+    padding-bottom: 4px;
 }
 
 .postsDes {
     font-size: 12px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Inter', sans-serif;
     opacity: .6;
+    letter-spacing: .3px;
     padding-bottom: 5px;
 }
 
 .postsImage {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     position: relative;
     border-radius: 7px;
     margin-right: 14px;
+    object-fit: cover;
     transition: transform .2s ease;
 }
 
@@ -49,14 +52,17 @@
 
 .postsDate {
     font-size: 12px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: .3px;
     opacity: .6;
 }
 
 .postsContainer {
     display: flex; 
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
+    text-decoration: None !important; 
+    padding-bottom: 10px;
 }
 
 .placeholder {

@@ -25,6 +25,42 @@
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     padding-bottom: 5rem;
+    line-height: 1.75rem;
+}
+
+h1 {
+    font-size: 23px;
+    font-weight: lighter;
+    font-family: 'Roboto mono', monospace;
+}
+
+h2 {
+    font-size: 21px;
+    font-weight: lighter;
+    font-family: 'Roboto mono', monospace;
+}
+
+h3 {
+
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: 'Roboto mono', monospace;
+}
+
+h4 {
+    font-size: 17px;
+    font-weight: lighter;
+    font-family: 'Roboto mono', monospace;
+}
+
+.postBody a{
+    text-decoration: underline;
+    color: inherit;
+}
+
+.postBody a:hover{
+    text-decoration: underline !important;
+    text-underline-offset: 2px; 
 }
 
 .image-container {
