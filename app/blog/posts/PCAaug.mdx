@@ -1,0 +1,104 @@
+---
+title: Image Augmentation with PCA
+publishedAt: '2024-10-19'
+summary: Eigenvalues are all you need.
+image: 'https://passionforstem.wordpress.com/wp-content/uploads/2017/01/sci-fi-space-art-2560x1600_020.jpg'
+---
+<div align = 'center'>
+<br/>
+<img src = 'https://www.researchgate.net/publication/341497226/figure/fig7/AS:1084227093303341@1635511291704/Data-augmentation-of-j-sample-image-a-PCA-color-augmentation-b-Affine-transform.jpg'></img>
+<em> all you need. </em>
+<br/>
+</div>
+
+<br/>
+
+$\text{PCA}$ based color augmentation plays an important role in computer vision to introduce a set of distortions to the RGB values of a given image, to allow your model to learn from a variety of data.
+<br/>
+Alongside the other data augmentations (flipping, translations, rotations, etc), $\text{PCA}$ based color augmentation introduces varying changes to the RGB values of your images, such that a given ConvNet has a greater variety of training data to learn from.
+<br/>
+Given a sample, $X$, with $3$ color channels, $\mathcal{RGB}$, of shape $c \times n \times n$, we can $c$ principal components and the $c$ eigenvalues ($\lambda$) which correspond go those $c$ principal components. 
+<br/>
+An individual pixel is denoted as:
+
+```math
+
+\mathcal{P}_{ij} = [\mathcal{R}_{ij}, \mathcal{G}_{ij}, \mathcal{B}_{ij}]
+
+```
+
+and the entire set of pixels is denoted as:
+
+```math
+
+\hat{X} = \begin{bmatrix} - P_{11} - \\ . \\ . \\ -\mathcal{P}_{IJ} \end{bmatrix}
+
+```
+
+When we perform $\text{PCA}$ on $\hat{X}$, we derive the principal components from the determinants of the co-variance matrix of $\hat{X}$, denoted as $C_{\hat{X}}$, which is computed as an outer product of $\hat{X}$, such that $C_{\hat{X}}$ is a $3 \times 3$ matrix.
+
+```math
+
+C_{\hat{X}} = \frac{\hat{X}^T\hat{X}}{IJ}
+
+```
+
+where $IJ$ is the total count of pixels in the image.
+<br/>
+The co-variance matrix tells us the variance and the co-variance of different color channels for $X$. Elements on the diagonal are simply $\text{Var}(\mathcal{R}_{ij})$, $\text{Var}(\mathcal{G}_{ij})$, $\text{Var}(\mathcal{B}_{ij})$, given that we compute as an outer product and ultimately turn out to simply being the variance.
+<br/>
+Elements on the off-diagonal are the co-variance of the corresponding elements that were multiplied together.
+<br/>
+For an **RGB** image, the $C_{\hat{X}}$ turns out to be a $3 \times 3$ matrix, and therefore when we compute $\text{PCA}$ via eigendecomposition, we receive back $3$ principal components and $3$ eigenvalues which correspond to them.
+<br/>
+So, to compute $\text{PCA}$
+<br/>
+1 | Find the covariance matrix of $\hat{X}$ as $C_{\hat{X}} = \frac{X^TX}{n}$<br/>
+2 | Find the eigenvalues and eigenvectors of $C_{\hat{X}}$, such that $C_{\hat{X}} = P\Lambda P^{-1}$ 
+<br/>
+The eigenvectors of $C_{\hat{X}}$ correspond to the $3$ principal components alongside the $3$ eigenvalues ($\lambda$).
+<br/>
+Now that we have the $3$ principal components ($p_i$) and $\lambda$'s, we can perform image augmentation on each pixel as follows:
+
+```math
+
+\vec{\text{aug}} = [p_1, p_2, p_3][\alpha_1\lambda_1, \alpha_2\lambda_2, \alpha_3\lambda_3]^T
+\\[3mm]
+\text{where }\vec{\text{aug}} \in \mathbb{R}^3
+```
+
+> this is a dot prod, not element wise. the first factor is a $3 \times 3$ matrix of principal components!!
+
+```math
+\mathcal{P}_{ij}^{aug} = \mathcal{P}_{ij} + \text{aug}^T
+\\[3mm]
+\mathcal{P}_{ij}^{aug} = [R, G, B]_{ij} + [R_{\text{aug}}, G_{\text{aug}}, B_{\text{aug}}]
+
+```
+
+where $\alpha \sim \mathcal{N}(\mu = 0, \sigma = .1)$, $p_i$ are the eigenvectors.
+<br/>
+This preserves color variance, as the magnitude of each $\lambda_i$, relative to other $\lambda_i$ denotes the amount of variance that we aim to capture / store amongst different pixel $\in \mathcal{P}_{ij}^{aug}$.
+<br/>
+The dot product with $\alpha_i \lambda_i$ scales the augmentation such that it aims to preserve the variance across all pixels pixels, influenced by the magnitude of $\lambda_i$.
+<br/>
+$\alpha$ is purely drawn stochastically from a Gaussian distrinution for randomness in the augmentations.
+<br/>
+More in-depth, the variance of each individual principal component ($\text{Var}(p$)) tells you the amount by which the direction of $p$ captures the variance of the original set of pixels.
+<br/>
+The principal component that corresponds to the largest eigenvalue captures the most variance. \
+The principal component that corresponds to the second-largest eigenvalue captures the second-most variance.
+<br/>
+Each individual value within a given $p_i$ tells you how much each value in the original vector contributes to the new direction denoted by $p_i$. The larger a given $ith$ value of the $p_i$ is, the more contribution or strength the $ith$ value in the original vector had, of course all relative to other values in the pixel vector, $\mathcal{P}_{ij}$.
+<br/>
+Then, given the dot product of
+
+```math
+
+\vec{\text{aug}} = [p_1, p_2, p_3][\alpha_1\lambda_1, \alpha_2\lambda_2, \alpha_3\lambda_3]^T
+\\[3mm]
+\vec{\text{aug}} = [R_{\text{aug}}, G_{\text{aug}}, B_{\text{aug}}]
+
+```
+
+we're capturing the contribution strength of each pixel value, $R$, $G$, and $B$ respectively across the entire image (given that we perform $\text{PCA}$ on the entire set of pixels) with an added multiple of $\alpha_i$ such that the augmentation vector, $\vec{aug}$, adds a slightly stochastic augmentation to each pixel in the image.
