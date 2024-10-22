@@ -19,6 +19,11 @@
 .pfp{
     height: 90px;
     border-radius: 3px;
+    transition:transform .2s ease;
+}
+
+.pfp:hover{
+    transform: rotate(10deg);
 }
 
 .vname{

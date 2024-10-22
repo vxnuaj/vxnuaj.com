@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <section className='home'>
       <div className = 'homeImg'>
-      <img className = 'pfp' src='/assets/runmememe.png' alt="Black Nebula" />
+      <img className = 'pfp' src='/assets/me.png' alt="Black Nebula" />
       </div>
       <h1 className='vname'>
         vxnuaj 
