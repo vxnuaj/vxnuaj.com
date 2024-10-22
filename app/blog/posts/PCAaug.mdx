@@ -9,7 +9,7 @@ $\text{PCA}$ based color augmentation plays an important role in computer vision
 <br/>
 Alongside the other data augmentations (flipping, translations, rotations, etc), $\text{PCA}$ based color augmentation introduces varying changes to the RGB values of your images, such that a given ConvNet has a greater variety of training data to learn from.
 <br/>
-Given a sample, $X$, with $3$ color channels, $\mathcal{RGB}$, of shape $c \times n \times n$, we can $c$ principal components and the $c$ eigenvalues ($\lambda$) which correspond go those $c$ principal components. 
+Given a sample, $X$, with $3$ color channels, $\mathcal{RGB}$, of shape $c \times n \times n$, we can compute $c$ principal components and the $c$ eigenvalues ($\lambda$) which correspond go those $c$ principal components. 
 <br/>
 An individual pixel is denoted as:
 
@@ -23,7 +23,7 @@ and the entire set of pixels is denoted as:
 
 ```math
 
-\hat{X} = \begin{bmatrix} - P_{11} - \\ . \\ . \\ -\mathcal{P}_{IJ} \end{bmatrix}
+\hat{X} = \begin{bmatrix} - \mathcal{P}_{11} - \\ . \\ . \\ -\mathcal{P}_{IJ} \end{bmatrix}
 
 ```
 
@@ -37,7 +37,7 @@ C_{\hat{X}} = \frac{\hat{X}^T\hat{X}}{IJ}
 
 where $IJ$ is the total count of pixels in the image.
 <br/>
-The co-variance matrix tells us the variance and the co-variance of different color channels for $X$. Elements on the diagonal are simply $\text{Var}(\mathcal{R}_{ij})$, $\text{Var}(\mathcal{G}_{ij})$, $\text{Var}(\mathcal{B}_{ij})$, given that we compute as an outer product and ultimately turn out to simply being the variance.
+The co-variance matrix tells us the variance and the co-variance of different color channels for $X$. Elements on the diagonal are simply $\text{Var}(\mathcal{R}_{ij})$, $\text{Var}(\mathcal{G}_{ij})$, $\text{Var}(\mathcal{B}_{ij})$.
 <br/>
 Elements on the off-diagonal are the co-variance of the corresponding elements that were multiplied together.
 <br/>
@@ -70,7 +70,7 @@ Now that we have the $3$ principal components ($p_i$) and $\lambda$'s, we can pe
 
 where $\alpha \sim \mathcal{N}(\mu = 0, \sigma = .1)$, $p_i$ are the eigenvectors.
 <br/>
-This preserves color variance, as the magnitude of each $\lambda_i$, relative to other $\lambda_i$ denotes the amount of variance that we aim to capture / store amongst different pixel $\in \mathcal{P}_{ij}^{aug}$.
+This preserves color variance, as the magnitude of each $\lambda_i$, relative to other $\lambda_i$ denotes the amount of variance that we aim to capture using the each corresponding $p_i$ amongst different pixels $\in \mathcal{P}_{ij}^{aug}$.
 <br/>
 The dot product with $\alpha_i \lambda_i$ scales the augmentation such that it aims to preserve the variance across all pixels pixels, influenced by the magnitude of $\lambda_i$.
 <br/>
@@ -93,4 +93,4 @@ Then, given the dot product of
 
 ```
 
-we're capturing the contribution strength of each pixel value, $R$, $G$, and $B$ respectively across the entire image (given that we perform $\text{PCA}$ on the entire set of pixels) with an added multiple of $\alpha_i$ such that the augmentation vector, $\vec{aug}$, adds a slightly stochastic augmentation to each pixel in the image.
+we're capturing the contribution strength of each pixel value, $R$, $G$, and $B$ respectively across the entire image (given that we perform $\text{PCA}$ on the entire set of pixels) with an added multiple of $\alpha_i$ such that the augmentation vector, $\vec{aug}$, adds a slightly stochastic augmentation to each pixel in the image when added to the original set of pixels.
