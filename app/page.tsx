@@ -42,7 +42,7 @@ export default function Page() {
         <br /><br />
         I also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>.
         <br /><br />
-        If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em> or <a href = 'https://cal.com/vxnuaj/quick-chat'><em>schedule a call!</em></a>
+        If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em>.
         <br /><br />
         Alternatively, if you want to stay updated with what I’ve been working on, check out my <em><a href = 'https://github.com/vxnuaj'>GitHub</a></em> or <em><a href = 'https://vxnuaj.blog/s/adastra'>subscribe to my Substack</a></em>.
       </p>
