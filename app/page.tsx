@@ -40,7 +40,7 @@ export default function Page() {
         <br /><br />
         Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <em><a href = '/infinity'>Infinity</a></em>.
         <br /><br />
-        I also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>.
+        I also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>. If you wanna go on a 20 mi. run, let me know <span className = 'subbody'>(i'm being serious)</span>.
         <br /><br />
         If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em>.
         <br /><br />
