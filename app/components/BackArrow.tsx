@@ -7,7 +7,18 @@ const BackArrow = () => {
   const router = useRouter();
 
   const handleBack = () => {
-    router.back(); 
+    const currentPath = window.location.pathname;
+
+    const parentPath = currentPath
+      .split('/')
+      .slice(0, -1)
+      .join('/');
+
+    const targetPath = parentPath || '/'
+
+    router.push(targetPath)
+
+    //router.back(); 
   };
 
   return (
