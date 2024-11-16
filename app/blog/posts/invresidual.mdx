@@ -10,7 +10,7 @@ Considering a Neural Network, $\mathcal{F}$, as a Manifold Learner, for a set of
 <br/>
 > Intuitively, $H$ discards of irrelevant features and extracts relevant features.
 <br/>
-Thereby, for a convolution with a kernel $\mathcal{K_i} \in \mathbb{R}^n$, we can easily reduce the dimensionality of $\mathcal{K}_i$ to $\mathbb{R}^m$, to reduce the computational cost, while still retaining the important features. Such can be the case, given the prior that $H$ embeds features in the subspace of $\mathbb{R}^n$, as $\mathbb{R}^m$.
+Thereby, for a convolution with a kernel $\mathcal{K_i}$, applied onto $X \in \mathbb{R}^n$, we can easily reduce the dimensionality of $X$ to $\mathbb{R}^m$, to reduce the computational cost, while still retaining the important features. Such can be the case, given the prior that $H$ embeds features in the subspace of $\mathbb{R}^n$, as $\mathbb{R}^m$.
 <br/>
 You could reduce the dimensionality, through the width multiplier $k$, introduced in MobileNetV1 -- that is until your depth is of the same representation as underlying manifold. But the non-linear activation, $H = \text{ReLU}$, can break down the effectiveness of doing so.
 <br/>
