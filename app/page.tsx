@@ -27,24 +27,14 @@ export default function Page() {
       <h1 className='vname'>
         vxnuaj 
         <span className='rname'> &nbsp;(juan vera)</span>
-        
       </h1>
-      <p className='desHome'>
-        working on neural nets @ the bay area.
-      </p>
       <p className='body'>
-        {`I opted out of UC Davis and flew across the country to Silicon Valley to learn
-        from exceptional founders and engineers.`}
-        <br /><br />
-        Currently, I’m maximizing for technical depth within Deep Learning, with the goal to get to its bleeding edge within the year.
-        <br /><br />
-        Recently, I’ve been curious about mechanistic interpretability & epistemology <span className='subbody'>(what is knowledge?)</span>, and <span className='subbody'>(will soon)</span> write more @ my blog, <em><a href = '/infinity'>Infinity</a></em>.
-        <br /><br />
-        I also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>. If you wanna go on a 20 mi. run, let me know <span className = 'subbody'>(i'm being serious)</span>.
-        <br /><br />
-        If you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em>.
-        <br /><br />
-        Alternatively, if you want to stay updated with what I’ve been working on, check out my <em><a href = 'https://github.com/vxnuaj'>GitHub</a></em> or <em><a href = 'https://vxnuaj.blog/s/adastra'>subscribe to my Substack</a></em>.
+        i do deep learning.
+        <br />
+        i also <a href = 'https://www.strava.com/athletes/101676876'><em>run</em></a>. If you wanna go on a 20 mi. run, let me know <span className = 'subbody'>(i'm being serious)</span>.
+        <br />
+        if you wanna chat, message me on <em><a href = 'https://x.com/vxnuaj'>X</a></em> <span className = 'subbody'>(first read <a href = 'https://t.co/BA0e7oSO2E'>this</a>)</span>.
+        <br />
       </p>
       <audio ref={audioRef} src="/assets/lilrascal.mp3"></audio>
       <footer>
