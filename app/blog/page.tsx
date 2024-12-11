@@ -15,8 +15,7 @@ export default function Page() {
       <div className = 'backarrow'>
       <BackArrow/>
       </div>
-      <h1 className = 'heading'>infinity</h1>
-      <p className = 'desblog'>this features part of my blog, towards Neural Networks.<br/> some are more raw, unpolished thoughts & ideas. <br/>i write on different topics, @ my blog, <em><u><b><a href = 'https://vxnuaj.blog'>Infinity.</a></b></u></em></p>
+      <h1 className = 'heading'>blog</h1>
       <BlogPosts />
     </section>
   )

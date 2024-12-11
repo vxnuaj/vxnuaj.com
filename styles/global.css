@@ -32,11 +32,27 @@
 html {
   min-width: 360px;
   align-items: center;
+  font-family: 'palatino';
+
 }
 
 a{
-    text-decoration:none !important;
+    text-decoration:dotted underline;
+    text-underline-offset: 2px;
     cursor:alias;
+    font-weight: bold;
+}
+
+a:hover{
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  cursor: alias;
+}
+
+p {
+
+  line-height: 30px;
+
 }
 
 .hashes{
@@ -163,19 +179,14 @@ table {
   text-wrap: balance;
 }
 
-.notfoundimg{
-  position: relative;
-  padding-bottom: 20px;
-  height: 200px;
-  left: 150px;
-  top: 250px;
-  border-radius: 10px;
+.notfound{
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
-.notfound{
-  position: relative;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 15px;
-  top: 275px;
-  text-align: center;
+.notfound:hover{
+  text-decoration: underline;
+  width: fit-content;
 }

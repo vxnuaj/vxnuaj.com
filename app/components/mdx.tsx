@@ -1,11 +1,12 @@
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
-import React from 'react'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
+import remarkBreaks from 'remark-breaks'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -69,17 +70,11 @@ function slugify(str) {
 
 function createHeading(level) {
   const Heading = ({ children }) => {
-    let slug = slugify(children)
-
-    const headingText = React.createElement(
-      'span',
-      { className: 'hashes' }, 
-      `${'#'.repeat(level) + ' '}`
-    );
+    let slug = slugify(children);
 
     return React.createElement(
-      `h${level}`,
-      { id: slug },
+      `h${level}`, // Create the correct heading element (h1, h2, etc.)
+      { id: slug }, // Set the slug as the id for anchor links
       [
         React.createElement('a', {
           href: `#${slug}`,
@@ -87,15 +82,15 @@ function createHeading(level) {
           className: 'anchor',
         }),
       ],
-      headingText,
-      children
-    )
+      children // Just render the children without the hashes
+    );
   }
 
-  Heading.displayName = `Heading${level}`
+  Heading.displayName = `Heading${level}`;
 
-  return Heading
+  return Heading;
 }
+
 
 let components = {
   h1: createHeading(1),
@@ -117,7 +112,7 @@ export function CustomMDX(props) {
       components={{ ...components, ...(props.components || {}) }}
       options={{
         mdxOptions: {
-          remarkPlugins: [remarkMath], 
+          remarkPlugins: [remarkMath, remarkBreaks], 
           rehypePlugins: [rehypeKatex], 
         },
       }}
