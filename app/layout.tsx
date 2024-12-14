@@ -2,6 +2,7 @@ import 'styles/global.css'
 import 'styles/home.css'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Analytics } from "@vercel/analytics/react"
 
 const cx = (...classes) => classes.filter(Boolean).join(' ')
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className="antialiased max-w-xl mx-auto mt-8 px-4">
         <main className="flex-auto min-w-[360px] mt-6 flex flex-col px-2 md:px-0">
           {children}
+          <Analytics/>
         </main>
       </body>
     </html>
