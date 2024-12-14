@@ -7,6 +7,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 import remarkBreaks from 'remark-breaks'
+import remarkFootnotes from 'remark-footnotes'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -112,8 +113,12 @@ export function CustomMDX(props) {
       components={{ ...components, ...(props.components || {}) }}
       options={{
         mdxOptions: {
-          remarkPlugins: [remarkMath, remarkBreaks], 
-          rehypePlugins: [rehypeKatex], 
+          remarkPlugins: [
+            remarkMath, 
+            remarkBreaks,
+            [remarkFootnotes, {inlineNotes: true}] 
+          ], 
+          rehypePlugins: [rehypeKatex],
         },
       }}
     />

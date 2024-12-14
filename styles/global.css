@@ -36,6 +36,25 @@ html {
 
 }
 
+/* footnotes */
+
+ol {
+
+  list-style: decimal;
+  padding-left: 1rem;
+  padding-top: 1rem;
+
+}
+
+ol li{
+
+  margin-bottom: .5rem;
+
+}
+
+/* end of footnotes css*/
+
+
 a{
     text-decoration:dotted underline;
     text-underline-offset: 2px;
