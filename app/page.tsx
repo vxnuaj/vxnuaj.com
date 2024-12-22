@@ -27,7 +27,7 @@ export default function Page() {
       </h1>
       <p className='body'>
       currently computing ∂'s ∈ ℝⁿ where n → ∞ <br/> 
-      <a href = 'https://x.com/vxnuaj'>x [dot] com</a> // <a href = 'https://github.com/vxnuaj'> github </a> // <a href = 'https://www.strava.com/athletes/101676876'> i run </a>
+      <span className = 'links'><a href = 'https://x.com/vxnuaj'>x [dot] com</a> // <a href = 'https://github.com/vxnuaj'> github</a> // <a href = 'https://www.strava.com/athletes/101676876'> i run</a> // <a href = 'https://vxnuaj.blog'>substack</a></span>
       </p>
       <audio ref={audioRef} src="/assets/soulofcinder.mp3"></audio>
       <footer className = 'footer'>
@@ -36,7 +36,7 @@ export default function Page() {
             <a href="/thoughts">thoughts</a>
             <a href = 'https://vxnuaj.github.io'>infinity</a>
             <span className='webtheme' onClick = {toggleAudio}>
-              theme
+              <strong>theme</strong>
             </span>
         </nav>
       </footer>

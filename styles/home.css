@@ -19,6 +19,11 @@
     font-family: 'Roboto Mono', monospace;
 }
 
+.links{
+
+    font-size: 13px;
+}
+
 .rname{
     font-size: 11px;
 }
