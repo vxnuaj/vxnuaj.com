@@ -19,7 +19,7 @@ export function BlogPosts() {
           <Link
             key={post.slug}
             className="flex flex-col space-y-1 mb-4 blogLink"
-            href={`/blog/${post.slug}`}
+            href={`/thoughts/${post.slug}`}
             style={{ textDecoration: 'none' }}
           >
             <div className="w-full flex flex-col md:flex-row items-start space-x-0 md:space-x-2">
