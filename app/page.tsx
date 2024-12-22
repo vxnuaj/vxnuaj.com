@@ -33,7 +33,7 @@ export default function Page() {
       <footer className = 'footer'>
         <nav className="footer-nav">
             <a href = '/now'>now</a>
-            <a href="/blog">blog</a>
+            <a href="/thoughts">thoughts</a>
             <a href = 'https://vxnuaj.github.io'>infinity</a>
             <span className='webtheme' onClick = {toggleAudio}>
               theme

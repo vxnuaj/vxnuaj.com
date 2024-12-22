@@ -15,7 +15,7 @@ export default function Page() {
       <div className = 'backarrow'>
       <BackArrow/>
       </div>
-      <h1 className = 'heading'>blog</h1>
+      <h1 className = 'heading'>thoughts</h1>
       <BlogPosts />
     </section>
   )
