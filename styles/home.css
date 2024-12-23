@@ -1,5 +1,5 @@
 .home {
-    margin-top: 60%;
+    margin-top: 50%;
     margin-left: 35%
 }
 
@@ -75,33 +75,3 @@
 
 }
 
-@media (max-height: 890px) {
-    .home {
-        margin-top: 70px;
-    }
-    .home .vname {
-        font-size: 25px;
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
-
-    .home .rname{
-        font-size: 13px;
-    }
-
-    .home .body {
-        padding-top: 1.5rem; 
-        padding-bottom: 1.5rem;
-        font-size: 15px;
-    }
-
-    .home .footer-nav{
-        padding-top: 1rem;
-    }
-
-    .home .homeImg{
-        overflow: hidden;
-        height: fit-content;
-    }
-
-}

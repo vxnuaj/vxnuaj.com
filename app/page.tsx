@@ -29,14 +29,14 @@ export default function Page() {
       currently computing ∂'s ∈ ℝⁿ where n → ∞ <br/> 
       <span className = 'links'><a href = 'https://x.com/vxnuaj'>x [dot] com</a> // <a href = 'https://github.com/vxnuaj'> github</a> // <a href = 'https://www.strava.com/athletes/101676876'> i run</a> // <a href = 'https://vxnuaj.blog'>substack</a></span>
       </p>
-      <audio ref={audioRef} src="/assets/soulofcinder.mp3"></audio>
+      <audio ref={audioRef} src="/tunes/soulofcinder.mp3"></audio>
       <footer className = 'footer'>
         <nav className="footer-nav">
             <a href = '/now'>now</a>
             <a href="/thoughts">thoughts</a>
             <a href = 'https://vxnuaj.github.io'>infinity</a>
             <span className='webtheme' onClick = {toggleAudio}>
-              <strong>theme</strong>
+              <strong>tunes</strong>
             </span>
         </nav>
       </footer>
