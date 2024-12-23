@@ -44,9 +44,12 @@ export default function Page() {
     <main> 
     
     <span className = 'focus'>
-        focus. <br/>future depends on ||focus||₂
+        focus. your future depends on it.
     <span className='theme' onClick = {toggleAudio}>
-    // tunes // 
+    tunes
+    </span><br/>
+    <span><br/>
+    <a href = '/' className = 'home'> home </a>
     </span>
     </span>
  
