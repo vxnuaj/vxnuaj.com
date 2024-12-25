@@ -13,7 +13,6 @@ export default function Page() {
     '/tunes/aboutyou.mp3',
     '/tunes/autumn1.mp3',
     '/tunes/autumn2.mp3',
-    '/tunes/extreme.mp3',
     '/tunes/gwyn.mp3',
     '/tunes/lilrascal.mp3',
     '/tunes/moon.mp3', 
