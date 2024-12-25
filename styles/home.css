@@ -1,7 +1,11 @@
 .home {
-    margin-top: 50%;
-    margin-left: 35%
+   
+    position: relative;
+    padding-top: 60%;
+    padding-left: 40%
+
 }
+
 
 .body a{
     text-decoration: dotted underline;
