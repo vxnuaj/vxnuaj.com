@@ -7,6 +7,7 @@ export default function Page() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false); 
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null); 
+  const [currentSongIndex, setCurrentSongIndex] = useState(0); // Track the current song index
 
   const mp3Files = [
     '/tunes/aboutyou.mp3',
@@ -25,9 +26,11 @@ export default function Page() {
 
   const playNextSong = () => {
     if (audioRef.current) {
-      const randomFile = mp3Files[Math.floor(Math.random() * mp3Files.length)];
-      audioRef.current.src = randomFile;
-      audioRef.current.play();
+      // Move to the next song in the array, looping back to the start if necessary
+      const nextSongIndex = (currentSongIndex + 1) % mp3Files.length;
+      setCurrentSongIndex(nextSongIndex); // Update the index for the next song
+      audioRef.current.src = mp3Files[nextSongIndex]; // Set the next song as the source
+      audioRef.current.play(); // Start playing the next song
     }
   };
 
@@ -43,12 +46,12 @@ export default function Page() {
   };
 
   const handleAudioEnd = () => {
-    playNextSong(); 
+    playNextSong(); // When the song ends, play the next song
   };
 
   const handleDoubleClick = () => {
     if (audioRef.current) {
-      playNextSong(); 
+      playNextSong(); // Skip to the next song on double click
     }
   };
 
@@ -80,8 +83,9 @@ export default function Page() {
       </p>
       <audio 
         ref={audioRef} 
-        src="/tunes/soulofcinder.mp3" 
+        src={mp3Files[currentSongIndex]} 
         onEnded={handleAudioEnd} 
+        autoPlay // Ensure auto-play works when the next song is set
       />
       <footer className='footer'>
         <nav className="footer-nav">
