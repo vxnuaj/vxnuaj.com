@@ -1,60 +1,54 @@
+/* Default styles */
 .home {
-   
     position: relative;
     padding-top: 60%;
-    padding-left: 40%
-
+    padding-left: 40%;
 }
 
-
-.body a{
+.body a {
     text-decoration: dotted underline;
     text-underline-offset: 1px;
 }
 
-.body a:hover{
+.body a:hover {
     text-decoration: underline !important;
     text-underline-offset: 2px;
 }
 
-
-.vname{
+.vname {
     font-size: 40px;
     font-family: 'Roboto Mono', monospace;
 }
 
-.links{
-
+.links {
     font-size: 13px;
 }
 
-.rname{
+.rname {
     font-size: 11px;
 }
 
-.desHome{
+.desHome {
     font-size: 13px;
-    opacity: .6;
+    opacity: 0.6;
 }
 
-.body{
+.body {
     font-size: 15px;
 }
 
-.subbody{
+.subbody {
     font-size: 10px;
 }
 
-.footer{
-
+.footer {
     position: relative;
     right: 90px;
     bottom: 105px;
     width: fit-content;
-
 }
 
-.footer-nav{
+.footer-nav {
     font-size: 13px;
     display: flex;
     flex-direction: column;
@@ -64,18 +58,59 @@
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
-  }
+}
 
-
-.webtheme{
+.webtheme {
     white-space: nowrap;
     font-size: 13px;
     cursor: alias;
 }
 
-.forLLMs{
-
+.forLLMs {
     opacity: 0;
-
 }
 
+/* Responsive styles for widths below 900px */
+@media (max-width: 900px) {
+    .vname {
+        font-size: 30px; /* Adjusted font size */
+    }
+
+    .links {
+        font-size: 11px; /* Adjusted font size */
+    }
+
+    .rname {
+        font-size: 9px; /* Adjusted font size */
+    }
+
+    .desHome {
+        font-size: 11px; /* Adjusted font size */
+    }
+
+    .body {
+        font-size: 13px; /* Adjusted font size */
+    }
+
+    .subbody {
+        font-size: 8px; /* Adjusted font size */
+    }
+
+    .footer{
+
+        bottom: 90px;
+
+    }
+
+    .footer-nav {
+        font-size: 11px; /* Adjusted font size */
+    }
+
+    .footer-nav a{
+        margin-bottom: 5px;
+    }
+
+    .webtheme {
+        font-size: 11px; /* Adjusted font size */
+    }
+}
