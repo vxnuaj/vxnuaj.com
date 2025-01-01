@@ -27,7 +27,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/assets/front.png" type="image/x-icon" />
+        <link rel="icon" href="/assets/image.png" type="image/x-icon" />
       </head>
       <body className="antialiased max-w-xl mx-auto mt-8 px-4">
         <main className="flex-auto min-w-[360px] mt-6 flex flex-col px-2 md:px-0">

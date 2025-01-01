@@ -3,8 +3,7 @@
     position: absolute;
     left: 45%;
     top: 30%;
-    width: 90%;
-    max-width: 1200px;
+    width: fit-content; 
 }
 
 .smolscreenwarning{
@@ -25,9 +24,11 @@
     font-size: 65px;
     font-family: 'Roboto Mono', monospace;
     padding-bottom: 5px;
+    width: fit-content;
 }
 .links {
     font-size: 16px;
+    width: fit-content;
 }
 .links a{
     text-decoration: none;
@@ -42,23 +43,27 @@
 .body {
     font-size: 20px;
     padding-bottom: 13px;
+    width: fit-content;
 }
 .footer {
     position: relative;
     margin-top: 30px;
     right: 135px;
     bottom: 165px;
+    width: fit-content;
 }
 
 .footer-nav {
     font-size: 18px;
     display: flex;
     flex-direction: column;
+    width: fit-content;
 }
 .footer-nav a {
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
+    width: fit-content;
 }
 .footer-nav a:hover{
     text-decoration: dotted underline;
@@ -68,6 +73,7 @@
     white-space: nowrap;
     font-size: 18px;
     cursor: alias;
+    width: fit-content;
 }
 .webtheme:hover{
     text-decoration: dotted underline;
