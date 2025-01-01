@@ -72,6 +72,11 @@
 
 /* Responsive styles for widths below 900px */
 @media (max-width: 900px) {
+
+    .home{
+        padding-left: 30%;
+    }
+
     .vname {
         font-size: 30px; /* Adjusted font size */
     }
@@ -89,7 +94,7 @@
     }
 
     .body {
-        font-size: 13px; /* Adjusted font size */
+        font-size: 11px; /* Adjusted font size */
     }
 
     .subbody {
