@@ -99,7 +99,6 @@ export default function Page() {
         ref={audioRef}
         src={shuffledSongs[currentSongIndex]}
         onEnded={handleAudioEnd}
-         
       />
       <footer className='footer'>
         <nav className="footer-nav">
