@@ -82,19 +82,20 @@ export default function Page() {
 
   return (
     <section className='home'>
+      <p className = 'smolscreenwarning'>(best viewed on desktop)</p>
       <h1 className='vname'>
         vxnuaj
         <span className='rname'> &nbsp;(juan vera)</span>
       </h1>
       <p className='body'>
         currently computing ∂'s ∈ ℝⁿ where n → ∞ <br />
-        <span className='links'>
-          <a href='https://x.com/vxnuaj'>x [dot] com</a> //
-          <a href='https://github.com/vxnuaj'> github</a> //
-          <a href='https://www.strava.com/athletes/101676876'> i run</a> //
-          <a href='https://vxnuaj.blog'>substack</a>
-        </span>
       </p>
+        <div className='links'>
+          <a href='https://x.com/vxnuaj'>x [dot] com</a> // 
+          <a href='https://github.com/vxnuaj'>github</a> // 
+          <a href='https://www.strava.com/athletes/101676876'>i run</a> //
+          <a href='https://vxnuaj.blog'>substack</a>
+        </div>
       <audio
         ref={audioRef}
         src={shuffledSongs[currentSongIndex]}
