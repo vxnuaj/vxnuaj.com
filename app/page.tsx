@@ -8,7 +8,6 @@ export default function Page() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [shuffledSongs, setShuffledSongs] = useState<string[]>([]);
-  const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const mp3Files = [
     "/tunes/autumn1.mp3",
@@ -59,24 +58,6 @@ export default function Page() {
     playNextSong(); // Automatically play next song when the current one ends
   };
 
-  const handleClick = () => {
-    if (clickTimeout) {
-      clearTimeout(clickTimeout); // Clear previous timeout if it exists
-    }
-
-    // Set a new timeout to differentiate single and double clicks
-    const timeout = setTimeout(() => {
-      toggleAudio(); // Toggle play/pause for single click
-    }, 300); // Timeout threshold for double click detection
-
-    setClickTimeout(timeout);
-  };
-
-  const handleDoubleClick = () => {
-    clearTimeout(clickTimeout); // Clear the single-click timeout if double-clicked
-    playNextSong(); // Skip to the next song and play it
-  };
-
   return (
     <section className="home">
       <p className="smolscreenwarning">(best viewed on desktop)</p>
@@ -105,8 +86,7 @@ export default function Page() {
           <a href="https://vxnuaj.github.io">infinity</a>
           <span
             className="webtheme"
-            onClick={handleClick} // Single click for play/pause
-            onDoubleClick={handleDoubleClick} // Double click for skip
+            onClick={toggleAudio} // Single click for play/pause
           >
             <strong>tunes</strong>
           </span>
