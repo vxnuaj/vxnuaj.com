@@ -83,7 +83,7 @@ export default function Page() {
         <nav className="footer-nav">
           <a href="/now">now</a>
           <a href="/thoughts">thoughts</a>
-          <a href="https://vxnuaj.github.io">infinity</a>
+          <a href="/infinity">infinity</a>
           <span
             className="webtheme"
             onClick={toggleAudio} // Single click for play/pause

@@ -11,14 +11,13 @@
 
 .heading {
     font-size: 40px;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
     font-family: 'Roboto Mono', monospace;
 }
 
 .desblog {
-    font-size: 13px;
-    opacity: .6;
-    padding-bottom: 1.75rem;
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .postsTitle {
@@ -29,8 +28,7 @@
 
 .postsDes {
     font-size: 12px;
-    opacity: .7;
-    font-family: 'Inter';
+    font-family: 'Roboto Mono', monospace;
     letter-spacing: .3px;
 }
 
@@ -53,7 +51,7 @@
     font-size: 12px;
     letter-spacing: .3px;
     opacity: .7;
-    font-family: 'Inter';
+    font-family: 'Roboto Mono', monospace;
 }
 
 .postsContainer {

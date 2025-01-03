@@ -62,11 +62,6 @@ a{
     font-weight: bold;
 }
 
-a:hover{
-  text-decoration: underline;
-  text-underline-offset: 1px;
-  cursor: alias;
-}
 
 p {
 
@@ -126,7 +121,7 @@ blockquote {
 }
 
 .prose code span {
-  @apply font-medium;
+  font-size: 10px;
 }
 
 .prose img {
@@ -208,4 +203,10 @@ table {
 .notfound:hover{
   text-decoration: underline;
   width: fit-content;
+}
+
+.small-code{
+
+  font-size: 0.8rem;
+
 }

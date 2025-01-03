@@ -1,0 +1,374 @@
+---
+title: Training Embeddings
+publishedAt: 2025-01-03
+summary: (and explaining skipgram & cbow)
+image: 'https://i.pinimg.com/736x/1b/1b/4e/1b1b4e63b4cd24ef8acf5c765702ef56.jpg'
+---
+
+# **Skipgram** 
+
+<br/>
+Say we have the sequence:
+
+```math
+
+S = \{\text{I'm Geoffrey Hinton, the godfather of deep learning.}\}
+```
+
+with the center word being $\text{godfather}$, serving as the input to the model.
+
+<br/>
+> Skipgram takes in a single word as input.
+
+<br/>
+Assume window size (for prediction) is 2 words, $k = 1$.
+
+<br/>
+A skipgram model aims to output the probability for all target words in a vocabulary, $V$ (where $||V|| >> ||S||$), with the goal of correctly predicting the nearest words, in this case with our target word being $\text{godfather}$ and a window size of $2$ -- $\text{"the"}$ and $\text{"of"}$ are our context.
+
+```math
+
+\text{input | godfather } \rightarrow \text{skipgram} \rightarrow \hat{y} \in \mathbb{R}^{|V|} \rightarrow \argmax(\hat{y}) \in \mathbb{R}^{k}
+
+```
+
+where $\hat{y}$ is the vector modelling the softmax probabilities for the vocabulary $V$, given the center word, "godfather".
+
+<br/>
+More specifically:
+
+```math
+
+E^To_{\text{godfather}} = e_{\text{godfather}} \rightarrow W^Te_{\text{godfather}} = z \rightarrow \text{softargmax}_{window_{size}}(z) = \hat{y}_{top-k} \in \mathbb{R}^{k}
+
+```
+
+where:
+
+<br/>
+~ $E \in \mathbb{R}^{|V| \times n}$ as the embedding matrix ($|V|$ is size of vocab and $n$ is the size of the hidden layer or embedding space.)
+~ $W \in \mathbb{R}^{n \times |V|}$
+
+<br/>
+$W$, during training, gets tuned to represent the context word embeddings, such that the parameters, $E$ and $W$, represent two sets of embedding vectors.
+
+<br/>
+For a more specific explanation onto why,
+
+<br/>
+Say we're inputting a single embedding vector $\vec{e}$, extracted from $E$, to feed into the matmul with $W^T$.
+
+<br/>
+Relying on the magnitude of the dot product as an interpretation for similarity (large positive, more similarity between two vectors), the larger the magnitude a given element of the output of the matmul is, the greater the similarity between $\vec{e}$ and a row of the embeddings $W^T$ are (denoted by a larger numerical value relative to other given elements in the output logits). 
+
+<br/>
+From here, it's easy to see how the softmax is able to produce higher $P$ for similar words, as higher $P$ corresponds to a greater logit element in the logit vector, relative to its other elements.
+
+<br/>
+Given that we're inputting a **center** word for the matmul with $W^T$, during backpropagation, $W^T$ gets trained to recognize the proper weights -- or equivalently embeddings -- for the context words. If dot product with a row of $W^T$ and $\vec{e}$ resulted in a higher logit, leading to an **incorrect** prediction, it's easy to see that the $∂\mathcal{L}$ and correspondingly, the update rule, will change the corresponding row embedding over multiple iterations to a more suitable value.
+
+<br/>
+Then, intuitively, as we're backpropagating the gradient from the hidden layer to the embedding layer, $E$ gets trained to match the context word embeddings, $W$, to get the proper output predictions for the context word, over multiple iterations.
+
+<br/>
+And they must, otherwise the model wouldn't mechanically function well enough to predict the proper context words. This naturally results in $E$ being center word emebddings (as that's our input) and $W$ being context words embeddings.
+
+<br/>
+> Neural networks, are just math.
+<br/>
+# CBOW
+
+<br/>
+Unlike Skipgram, CBOW aims to predict the center word given context words.
+
+<br/>
+The input to CBOW models is constructed as:
+
+```math
+
+E^T{O} = \hat{E} \\[3mm] \vec{x} = \frac{1}{k}\sum_{i = 1}^k {\hat{e}}_{i}
+
+```
+
+where $\vec{e_i}$ is the $ith$ vector $\in \hat{E}$, $k$ is the total count of context words, $O \in \mathbb{R}^{|V| \times n}$ is the matrix of one hot embeddings for the input context words ($n$ is the sequence length / context word count), and $E$ is the context word embeddings.
+
+<br/>
+We feed $\vec{x}$ into the hidden layer with weights $W^T$, as:
+
+```math
+
+W^T\vec{x} = Z
+
+```
+
+to then get output probabilities for the center word as $\text{softmax}(Z)$.
+
+<br/>
+Given that we're only predicting a singular center word, we simply extract the predicted word as an $\argmax()$ with $k = 1$.
+
+<br/>
+Just as prior, we can derive the intuitive informal "proof" (because how formal / rigorous can you get with neural nets without insane complexity...) for the construction / training of the embeddings. It works the same way.
+
+<br/>
+# Training.
+<br/>
+I'll be training word2vec on the PTB dataset. The dataset comes with a mixture of train, validation, and test splits, but for the purposes of generating embeddings, I'll be merging all into one large training set.
+<br/>
+
+<br/>
+
+```python {className="small-code"}
+lines = 0
+
+with open('data/train.txt', 'r') as f:
+
+    for line in f:
+
+        lines += 1
+
+print(lines)
+```
+<br/>
+```
+> 49199
+```
+<br/>
+We have about 49199 unique sequences in the document.
+```python
+
+from collections import Counter
+
+with open('data/train.txt', 'r') as f:
+    lines = f.readlines()
+
+words = [word for line in lines for word in line.split()]
+word_counts = Counter(words)
+
+threshold = 10
+processed_lines = []
+for line in lines:
+    processed_words = [
+        word if word_counts[word] >= threshold else "_unk_"
+        for word in line.split()
+    ]
+
+    processed_lines.append(" ".join(processed_words))
+
+with open('data/trainv2.txt', 'w') as f:
+    f.writelines([line + '\n' for line in processed_lines])
+```
+<br/>
+Now my data is written in `trainv2.txt`.
+
+<br/>
+I'm simply going to be training the model using Gensim's API.
+
+<br/>
+Albeit, not the greatest since we can't see intermediate loss values as effectively (seemingly broken), it'll still work for lightweight training.
+
+<br/>
+I attempt to call loss values using ```LossCallback(CallBackAny2Vec)``` object, but consistently returned loss values of $0$.
+
+<br/>
+```python
+from gensim.models import Word2Vec
+from gensim.models.callbacks import CallbackAny2Vec
+
+class LossCallback(CallbackAny2Vec):
+    def __init__(self, model):
+        self.losses = []
+        self.model = model
+        self.epochs = []
+
+    def on_epoch_end(self, model):
+        loss = model.get_latest_training_loss()
+        self.losses.append(loss)
+        epoch = len(self.losses)
+        self.epochs.append(epoch)
+        
+        print(f"Epoch {epoch}: Loss = {loss}")
+        
+
+    def save_model(self):
+        self.model.save("word2vec_model.model")
+        print("Model saved to 'word2vec_model.model'")
+
+def load_data(path):
+    sequences = []
+    with open(path, 'r') as f:
+        for sequence in f:
+            sequence = sequence.split()
+            sequences.append(sequence)
+    return sequences
+
+sequences = load_data('data/trainv2.txt')
+
+# Hyperparameters
+embed_dim = 100
+window_size = 5
+epochs = 500
+
+print("Initializing Model")
+model = Word2Vec(
+    sentences=sequences,
+    vector_size=embed_dim,  
+    window=window_size,     
+    min_count=2,            
+    sg=0,                   
+    epochs=epochs,
+    compute_loss = True
+)
+
+print('building vocab')
+model.build_vocab(sequences)
+print(f"Model initialized with {len(model.wv.index_to_key)} unique words")
+
+loss_callback = LossCallback(model)
+
+print("Training")
+
+model.train(sequences, 
+    total_examples=model.corpus_count, 
+    epochs=epochs, 
+    callbacks=[loss_callback]
+    )
+
+loss_callback.save_model()
+```
+<br/>
+
+We can now assess the cosine similarity for our $300$ dimensional embeddings. 
+```math
+
+\cos\theta = \frac{\vec{a}\vec{b}}{||\vec{a}|| \cdot ||\vec{b}||}
+
+```
+<br/>
+Note that $\cos \theta \in [-1,1]$, where $1$ indicates high similarity, $0$ indicates orthogonal vectors, and $-1$ indicates dissimilar vectors.
+<br/>
+Here are the $10$ nearest vectors to the vector corresponding to $\text{computer}$.
+
+
+<br/>
+```python
+print(model.wv.most_similar('computer', topn=10))
+```
+<br/>
+```python
+[('computers', 0.6619974374771118),
+ ('software', 0.5994142889976501),
+ ('digital', 0.47143417596817017),
+ ('minicomputers', 0.44772008061408997),
+ ('machines', 0.4456964433193207),
+ ('supercomputer', 0.4447154998779297),
+ ('toy', 0.444561630487442),
+ ('ibm', 0.43565645813941956),
+ ('equipment', 0.4339454472064972),
+ ('electronic', 0.4326600134372711)]
+
+```
+<br/>
+
+and purely for `computer` and `supercomputer`, done manually for comparison with Gensim's API (rounding errors??)
+
+<br/>
+
+```python
+computer_vector = word_vectors.get_vector('computer')
+supercomputer_vector = word_vectors.get_vector('supercomputer')
+
+cos_sim = np.dot(computer_vector, supercomputer_vector) / (np.linalg.norm(computer_vector) * np.linalg.norm(supercomputer_vector))
+print(cos_sim)
+```
+
+<br/>
+
+```python
+>> 0.44471553
+
+```
+<br/>
+
+This puts our two vectors at an angle of about $60°$. Albeit this might indicate that semantic meaning hasn't been effectively captured in the embedding space, note that we're operating $\in \mathbb{R}^{300}$. The curse of dimensionality is very real.
+<br/>
+Let's project our embeddings onto a lower dimensionality, say $\mathbb{R}^3$.
+<br/>
+Rather than relying on linear methods, like $\text{PCA}$, I'll be using $\text{T-SNE}$ as it preserves the underlying non-linear structure of the manifold corresponding to the data.
+<br/>
+Just to keep things simple, I'll be keeping the perplexity value at $30$.
+<br/>
+```python
+from sklearn.manifold import TSNE
+
+word_vectors_reduced = TSNE(n_components=3,
+                            verbose = 2).fit_transform(np_word_vectors)
+```
+<br/>
+```bash
+> [t-SNE] Computing 91 nearest neighbors...
+> [t-SNE] Indexed 7393 samples in 0.001s...
+> [t-SNE] Computed neighbors for 7393 samples in 0.293s...
+> [t-SNE] Computed conditional probabilities for sample 1000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 2000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 3000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 4000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 5000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 6000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 7000 / 7393
+> [t-SNE] Computed conditional probabilities for sample 7393 / 7393
+> [t-SNE] Mean sigma: 7.943408
+> [t-SNE] Computed conditional probabilities in 0.102s
+> [t-SNE] Iteration 50: error = 138.7195740, gradient norm = 0.1113852 (50 iterations in 4.987s)
+> [t-SNE] Iteration 100: error = 169.5654755, gradient norm = 0.0215915 (50 iterations in 3.936s)
+> [t-SNE] Iteration 150: error = 169.5790863, gradient norm = 0.0794567 (50 iterations in 5.081s)
+> [t-SNE] Iteration 200: error = 172.6365662, gradient norm = 0.0205027 (50 iterations in 5.441s)
+> [t-SNE] Iteration 250: error = 175.0137177, gradient norm = 0.0084834 (50 iterations in 5.060s)
+> [t-SNE] KL divergence after 250 iterations with early exaggeration: 175.013718
+> [t-SNE] Iteration 300: error = 10.0660753, gradient norm = 0.0125573 (50 iterations in 4.626s)
+> [t-SNE] Iteration 350: error = 9.2830153, gradient norm = 0.0105829 (50 iterations in 4.448s)
+> [t-SNE] Iteration 400: error = 8.7625418, gradient norm = 0.0095544 (50 iterations in 4.570s)
+> [t-SNE] Iteration 450: error = 8.5203323, gradient norm = 0.0089769 (50 iterations in 4.765s)
+> [t-SNE] Iteration 500: error = 8.3215771, gradient norm = 0.0083913 (50 iterations in 5.046s)
+> [t-SNE] Iteration 550: error = 8.1770744, gradient norm = 0.0079914 (50 iterations in 4.962s)
+> [t-SNE] Iteration 600: error = 8.0532246, gradient norm = 0.0076157 (50 iterations in 4.933s)
+> [t-SNE] Iteration 650: error = 7.9405279, gradient norm = 0.0073834 (50 iterations in 5.477s)
+> [t-SNE] Iteration 700: error = 7.8365841, gradient norm = 0.0070329 (50 iterations in 6.343s)
+> [t-SNE] Iteration 750: error = 7.7487297, gradient norm = 0.0067275 (50 iterations in 4.957s)
+> [t-SNE] Iteration 800: error = 7.6637888, gradient norm = 0.0065605 (50 iterations in 5.399s)
+> [t-SNE] Iteration 850: error = 7.5861931, gradient norm = 0.0063698 (50 iterations in 6.829s)
+> [t-SNE] Iteration 900: error = 7.5195761, gradient norm = 0.0060594 (50 iterations in 8.860s)
+> [t-SNE] Iteration 950: error = 7.4658055, gradient norm = 0.0058960 (50 iterations in 9.928s)
+> [t-SNE] Iteration 1000: error = 7.4145055, gradient norm = 0.0057492 (50 iterations in 9.600s)
+> [t-SNE] KL divergence after 1000 iterations: 7.414505
+```
+<br/>
+
+Now computing cosine similarity for $\text{supercomputer}$ and $\text{computer}$
+<br/>
+```python
+supercomputer_idx = word_vectors.get_index('supercomputer')
+computer_idx = word_vectors.get_index('computer')
+print(f"Cosine Similarity between supercomputer and computer: \
+    {np.dot(word_vectors_reduced[supercomputer_idx], word_vectors_reduced[computer_idx]) \
+    / (np.linalg.norm(word_vectors_reduced[supercomputer_idx]) \
+    * np.linalg.norm(word_vectors_reduced[computer_idx]))}")
+```
+<br/>
+```python
+> Cosine Similarity between supercomputer and computer: 0.9849855899810791
+
+```
+<br/>
+It's clear to see that the $\cos$ similarity works more effective over smaller $D$-dimensional spaces
+
+<br/>
+Intuitively, you can see this as a lower $D$ dimensional space containing more constraint on vectors in terms of directions they can point in, such that they're forced to be more tightly packed together.
+
+<br/>
+Of course, with similar vectors in the original $\mathbb{R}^D$, similarity becomes easier to see.
+<br/>
+Though, after reducing dimensionality, preserving the underlying structure can be a challenge the lower $D$ becomes.
+<br/>
+You can see this effect on my embeddings [here](https://projector.tensorflow.org/?config=https://www.vxnuaj.com/labspace/embeds.json), where it appears that (semantically) non-similar vectors appear to have a high cosine similarity despite being very dissimilar in the original $\mathbb{R}^{300}$ space.
+<br/>
+> If you load the link, make sure to toggle "Spherize Data" and disable PCA / Keep it to 3 components to properly visualize.

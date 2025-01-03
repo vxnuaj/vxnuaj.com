@@ -5,19 +5,18 @@
 .postTitle{
     font-size: 30px;
     font-family: 'Roboto Mono', monospace;
-    padding-bottom:1rem;
+    padding-bottom:1.5rem;
 }
 
 .postDate{
     font-size: 13px;
-    opacity: .6;
     font-family: 'Roboto Mono', monospace;
 }
 
 .postDes{
-    font-size: 13px;
-    opacity: .6;
+    font-size: 15px;
     font-family: 'Roboto Mono', monospace;
+    text-underline-offset: 3px;
 }
 
 .postBody{
