@@ -10,12 +10,9 @@ export default function Page() {
   const [shuffledSongs, setShuffledSongs] = useState<string[]>([]);
 
   const mp3Files = [
-    "/tunes/autumn1.mp3",
-    "/tunes/autumn2.mp3",
     "/tunes/gwyn.mp3",
-    "/tunes/moon.mp3",
-    "/tunes/paris.mp3",
     "/tunes/soulofcinder.mp3",
+    "/tunes/lilarascal.mp3"
   ];
 
   const shuffleArray = (array: string[]) => {
