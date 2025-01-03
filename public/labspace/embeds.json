@@ -1,0 +1,13 @@
+{
+    "embeddings": [
+      {
+        "tensorName": "embeds!",
+        "tensorShape": [
+          7393,
+          3
+        ],
+        "tensorPath": "https://gist.githubusercontent.com/vxnuaj/73632b9c963581f8746eb4fe18221c41/raw/e71e3ac7431e6b650835565eb832754a9225615e/word_vectors.tsv",
+        "metadataPath": "https://gist.githubusercontent.com/vxnuaj/73632b9c963581f8746eb4fe18221c41/raw/e71e3ac7431e6b650835565eb832754a9225615e/word_vector_keys.tsv"
+      }
+    ]
+  }
