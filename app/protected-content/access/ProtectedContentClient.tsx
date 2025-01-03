@@ -57,7 +57,7 @@ export default function ProtectedContentClient() {
 
   return (
     <section className="protected-content">
-      <h1>Mission.</h1>
+      <h1>Remember</h1>
       <p className="des">
         Life is too short, to not live with intention.
         <br/>
