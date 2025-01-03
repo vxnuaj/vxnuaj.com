@@ -12,7 +12,7 @@ export default function Page() {
   const mp3Files = [
     "/tunes/gwyn.mp3",
     "/tunes/soulofcinder.mp3",
-    "/tunes/lilarascal.mp3"
+    "/tunes/lilrascal.mp3"
   ];
 
   const shuffleArray = (array: string[]) => {
